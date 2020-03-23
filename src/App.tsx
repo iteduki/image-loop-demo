@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import RandomImage from './components/RandomImage'
-import image01 from './assets/images/01.png'
 
 function App() {
 
@@ -14,7 +13,9 @@ function App() {
   const strs = images.map(image => { return image as string })
 
   return (
-    <RandomImage images={strs} />
+    <>
+      <RandomImage imagePaths={strs} />
+    </>
   );
 }
 
