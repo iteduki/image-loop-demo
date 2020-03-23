@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import RandomImage from './components/RandomImage'
+import image01 from './assets/images/01.png'
 
 function App() {
+
+  const importAll = (r: __WebpackModuleApi.RequireContext) => {
+    return r.keys().map(r);
+  }
+
+  const images = importAll(require.context('./assets/images', false, /\.(png|jpe?g|svg)$/));
+
+  const strs = images.map(image => { return image as string })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RandomImage images={strs} />
   );
 }
 
