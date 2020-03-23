@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import RandomImage from './components/RandomImage'
+import LoopSlider from './components/LoopSlider'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
       <RandomImage imagePaths={strs} />
+      <LoopSlider imagePaths={strs} />
     </>
   );
 }
