@@ -15,7 +15,13 @@ function App() {
 
   return (
     <>
-      <RandomImage imagePaths={strs} />
+      <h1>All Images</h1>
+      <div style={{ width: 'auto', display: 'flex', overflow: 'hidden' }}>{strs.map(image => <img src={image} alt={image} key={image} />)}</div>
+      <hr />
+      <h1>Random 6 Image</h1>
+      <RandomImage imagePaths={strs.concat()} />
+      <hr />
+      <h1>Infinite Scroll Image</h1>
       <LoopSlider imagePaths={strs} />
     </>
   );
