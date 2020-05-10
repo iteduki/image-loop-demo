@@ -4,10 +4,9 @@ import styled, { keyframes } from 'styled-components'
 const LoopWrap = styled.div`
   display: flex;
   overflow: hidden;
-  width: auto;
 `
 const LoopAnimation = keyframes`
-  0% {
+  from {
     transform: translateX(100%);
   }
   to {
@@ -17,7 +16,6 @@ const LoopAnimation = keyframes`
 
 const LoopWrapChildFirst = styled.div`
   display: flex;
-  width: auto;
   animation: ${LoopAnimation} 50s -25s linear infinite;
 `
 
@@ -26,7 +24,7 @@ const LoopWrapImg = styled.img`
 `
 
 const LoopAnimation2 = keyframes`
-  0% {
+  from {
     transform: translateX(0);
   }
   to {
@@ -36,7 +34,6 @@ const LoopAnimation2 = keyframes`
 
 const LoopWrapChildSecond = styled.div`
   display: flex;
-  width: auto;
   animation: ${LoopAnimation2} 50s linear infinite;
 `
 
