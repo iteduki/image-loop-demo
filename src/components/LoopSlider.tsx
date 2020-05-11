@@ -14,9 +14,9 @@ const LoopAnimation = keyframes`
   }
 `
 
-const LoopWrapChildFirst = styled.div`
+const LoopWrapChildFirst = styled.div<{ duration: number }>`
   display: flex;
-  animation: ${LoopAnimation} 50s -25s linear infinite;
+  animation: ${LoopAnimation} ${({ duration }) => `${duration}s -${duration / 2}s`} linear infinite;
 `
 
 const LoopWrapImg = styled.img`
@@ -32,25 +32,27 @@ const LoopAnimation2 = keyframes`
   }
 `
 
-const LoopWrapChildSecond = styled.div`
+const LoopWrapChildLast = styled.div<{ duration: number }>`
   display: flex;
-  animation: ${LoopAnimation2} 50s linear infinite;
+  animation: ${LoopAnimation2} ${({ duration }) => duration}s linear infinite;
 `
 
 type Props = {
-  imagePaths: string[]
+  imagePaths: string[],
+  duration?: number
 }
 
-const LoopSlider: React.FC<Props> = ({ imagePaths }) => {
+const LoopSlider: React.FC<Props> = ({ imagePaths, duration = 25 }) => {
+  const imgs = imagePaths.map(image => <LoopWrapImg src={image} alt={image} key={image} />)
   return (
     <>
       <LoopWrap>
-        <LoopWrapChildFirst>
-          {imagePaths.map(image => <LoopWrapImg src={image} alt={image} key={image} />)}
+        <LoopWrapChildFirst duration={duration}>
+          {imgs}
         </LoopWrapChildFirst>
-        <LoopWrapChildSecond>
-          {imagePaths.map(image => <LoopWrapImg src={image} alt={image} key={image} />)}
-        </LoopWrapChildSecond>
+        <LoopWrapChildLast duration={duration}>
+          {imgs}
+        </LoopWrapChildLast>
       </LoopWrap>
     </>
   )
